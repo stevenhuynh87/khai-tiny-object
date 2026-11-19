@@ -1,0 +1,17 @@
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+datasets/
+data/
+weights/
+checkpoints/
+runs/
+outputs/
+*.pt
+*.pth
+*.onnx
+*.engine
+.kaggle/
+kaggle.json
+.DS_Store
