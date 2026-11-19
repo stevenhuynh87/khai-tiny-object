@@ -8,14 +8,28 @@ train_dataloader:
   total_batch_size: 1
   num_workers: 4
   dataset:
-    img_folder: "F:/Jetson Quậy/CV_PR_HVTD/data/AI-TOD-v2/images/trainval"
-    ann_file: "F:/Jetson Quậy/CV_PR_HVTD/data/AI-TOD-v2/annotations/aitodv2_trainval.json"
+    img_folder: "F:/Jetson Quậy/CV_PR_HVTD/data/AI-TOD-v2/images/train"
+    ann_file: "F:/Jetson Quậy/CV_PR_HVTD/data/AI-TOD-v2/annotations/aitodv2_train.json"
 
 val_dataloader:
   total_batch_size: 4
   num_workers: 4
   dataset:
-    img_folder: "F:/Jetson Quậy/CV_PR_HVTD/data/AI-TOD-v2/images/test"
-    ann_file: "F:/Jetson Quậy/CV_PR_HVTD/data/AI-TOD-v2/annotations/aitodv2_test.json"
+    img_folder: "F:/Jetson Quậy/CV_PR_HVTD/data/AI-TOD-v2/images/val"
+    ann_file: "F:/Jetson Quậy/CV_PR_HVTD/data/AI-TOD-v2/annotations/aitodv2_val.json"
 
 use_amp: False
+
+optimizer:
+  params:
+    -
+      params: '^(?=.*backbone)(?!.*norm|bn).*$'
+      lr: 0.0000025
+    -
+      params: '^(?=.*backbone)(?=.*norm|bn).*$'
+      lr: 0.0000025
+      weight_decay: 0.
+    -
+      params: '^(?=.*(?:encoder|decoder))(?=.*(?:norm|bn|bias)).*$'
+      weight_decay: 0.
+  lr: 0.000025

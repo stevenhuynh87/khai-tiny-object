@@ -23,22 +23,25 @@ def load_yaml(path: Path) -> dict:
 
 
 def main() -> None:
-    dome_config = DOME_ROOT / "configs/dome/Dome-S-AITOD.yml"
+    dome_config = WORKSPACE_ROOT / "configs/dome_s_pilot.yaml"
     dataset_config = DOME_ROOT / "configs/dataset/aitod_detection.yml"
     dataloader_config = DOME_ROOT / "configs/dome/include/dataloader.yml"
     hgnet_config = DOME_ROOT / "configs/dome/include/dome_hgnetv2.yml"
+    pilot_values = load_yaml(dome_config)
+    train_dataset = pilot_values["train_dataloader"]["dataset"]
+    val_dataset = pilot_values["val_dataloader"]["dataset"]
 
     values = {
         "config_exists": dome_config.exists(),
         "dataset_config_exists": dataset_config.exists(),
         "train_annotation_exists": (
-            DATASET_ROOT / "annotations/aitodv2_trainval.json"
+            Path(train_dataset["ann_file"])
         ).exists(),
-        "test_annotation_exists": (
-            DATASET_ROOT / "annotations/aitodv2_test.json"
+        "val_annotation_exists": (
+            Path(val_dataset["ann_file"])
         ).exists(),
-        "train_images_exists": (DATASET_ROOT / "images/trainval").exists(),
-        "test_images_exists": (DATASET_ROOT / "images/test").exists(),
+        "train_images_exists": Path(train_dataset["img_folder"]).exists(),
+        "val_images_exists": Path(val_dataset["img_folder"]).exists(),
     }
 
     dataset_values = load_yaml(dataset_config)
@@ -47,8 +50,8 @@ def main() -> None:
 
     values.update(
         {
-            "train_batch_size": dataloader_values["train_dataloader"]["total_batch_size"],
-            "val_batch_size": dataloader_values["val_dataloader"]["total_batch_size"],
+            "train_batch_size": pilot_values["train_dataloader"]["total_batch_size"],
+            "val_batch_size": pilot_values["val_dataloader"]["total_batch_size"],
             "eval_spatial_size": hgnet_values["eval_spatial_size"],
             "train_input_size": dataloader_values["train_dataloader"]["dataset"]["transforms"]["ops"][5][
                 "size"
