@@ -1,0 +1,22 @@
+{
+  "kernel": "ms_deform_attn_core_pytorch",
+  "iterations": 50,
+  "input_shape": [
+    1,
+    53125,
+    256
+  ],
+  "query_shape": [
+    1,
+    300,
+    256
+  ],
+  "output_shape": [
+    1,
+    300,
+    256
+  ],
+  "loss_first": 0.0318540558218956,
+  "loss_last": 0.0318540558218956,
+  "device": "NVIDIA GeForce RTX 3060 Ti"
+}
