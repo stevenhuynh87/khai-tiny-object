@@ -1,0 +1,17 @@
+{
+  "backend": "pytorch_fallback",
+  "seed": 2025,
+  "status": "passed",
+  "gpu": "NVIDIA GeForce RTX 3060 Ti",
+  "params_M": 13.24,
+  "inference_peak_vram_MB": 582.33,
+  "train_peak_vram_MB": 4954.9,
+  "val_peak_vram_MB": 2355.78,
+  "train_iterations": 10,
+  "first_loss": 24.96019744873047,
+  "last_loss": 24.998313903808594,
+  "train_batch_size": 1,
+  "val_batch_size": 4,
+  "val_evaluator": "AitodCocoEvaluator",
+  "val_images_checked": 20
+}

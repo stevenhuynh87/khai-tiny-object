@@ -5,7 +5,7 @@ __include__: [
 output_dir: "F:/Jetson Quậy/khai-tiny-object/JetsonDinh_workspace/artifacts/logs/dome_s_pilot"
 
 train_dataloader:
-  total_batch_size: 2
+  total_batch_size: 1
   num_workers: 4
   dataset:
     img_folder: "F:/Jetson Quậy/CV_PR_HVTD/data/AI-TOD-v2/images/trainval"
