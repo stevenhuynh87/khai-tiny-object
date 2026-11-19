@@ -1,0 +1,20 @@
+{
+  "config_exists": true,
+  "dataset_config_exists": true,
+  "train_annotation_exists": true,
+  "test_annotation_exists": true,
+  "train_images_exists": true,
+  "test_images_exists": true,
+  "train_batch_size": 8,
+  "val_batch_size": 16,
+  "eval_spatial_size": [
+    800,
+    800
+  ],
+  "train_input_size": [
+    800,
+    800
+  ],
+  "num_classes": 9,
+  "evaluator": "AitodCocoEvaluator"
+}

@@ -1,0 +1,21 @@
+__include__: [
+  "F:/Jetson Quậy/CV_PR_HVTD/third_party/Dome-DETR/configs/dome/Dome-S-AITOD.yml",
+]
+
+output_dir: "F:/Jetson Quậy/khai-tiny-object/JetsonDinh_workspace/artifacts/logs/dome_s_pilot"
+
+train_dataloader:
+  total_batch_size: 2
+  num_workers: 4
+  dataset:
+    img_folder: "F:/Jetson Quậy/CV_PR_HVTD/data/AI-TOD-v2/images/trainval"
+    ann_file: "F:/Jetson Quậy/CV_PR_HVTD/data/AI-TOD-v2/annotations/aitodv2_trainval.json"
+
+val_dataloader:
+  total_batch_size: 4
+  num_workers: 4
+  dataset:
+    img_folder: "F:/Jetson Quậy/CV_PR_HVTD/data/AI-TOD-v2/images/test"
+    ann_file: "F:/Jetson Quậy/CV_PR_HVTD/data/AI-TOD-v2/annotations/aitodv2_test.json"
+
+use_amp: False
